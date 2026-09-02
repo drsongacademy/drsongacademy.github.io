@@ -58,6 +58,9 @@
   .home-hero .eyebrow{justify-content:center;}
   .home-h1{font-family:'Newsreader', serif; font-weight:500; font-size:42px; line-height:1.3; letter-spacing:-0.01em; margin:8px 0 26px; white-space:nowrap;}
   .home-lead{color:var(--slate); font-size:16px; max-width:56ch; margin:0 auto 14px;}
+  .home-coverage-list{list-style:none; padding:0; margin:0 auto 14px; display:inline-block; text-align:left;}
+  .home-coverage-list li{font-size:15px; color:var(--paper); padding:3px 0 3px 18px; position:relative;}
+  .home-coverage-list li::before{content:'—'; color:var(--amber); position:absolute; left:0;}
   .home-actions{display:flex; gap:14px; justify-content:center; margin-top:30px;}
   @media (max-width:900px){
     .home-h1{font-size:28px; white-space:normal;}
@@ -88,6 +91,23 @@
 
   /* ---- Courses page ---- */
   .info-block{margin-bottom:28px;}
+  .subject-selector{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; border-bottom:1px solid rgba(150,160,189,0.2); padding-bottom:24px;}
+  .subject-tab{
+    background:var(--ink-2); border:1px solid rgba(150,160,189,0.25); color:var(--slate);
+    font-family:'IBM Plex Sans', sans-serif; font-size:13.5px; font-weight:600;
+    padding:10px 18px; border-radius:20px; cursor:pointer; transition:all .15s ease;
+  }
+  .subject-tab:hover{color:var(--paper); border-color:rgba(150,160,189,0.5);}
+  .subject-tab.active{background:rgba(242,183,5,0.14); color:var(--amber); border-color:rgba(242,183,5,0.4);}
+  .subject-view{display:none;}
+  .subject-view.active{display:block;}
+  .coming-soon-box{
+    text-align:center; padding:70px 20px; background:var(--ink-2);
+    border:1px dashed rgba(150,160,189,0.3); border-radius:8px;
+  }
+  .coming-soon-icon{font-size:32px; color:var(--amber); margin-bottom:16px;}
+  .coming-soon-box h3{font-family:'Newsreader', serif; font-size:24px; margin-bottom:10px;}
+  .coming-soon-box p{color:var(--slate); font-size:14.5px;}
   .info-block h3{font-family:'Newsreader', serif; font-size:19px; margin-bottom:10px;}
   .info-block p, .info-block li{color:var(--slate); font-size:14px; margin-bottom:6px;}
   .info-block ul{padding-left:20px;}
@@ -174,11 +194,18 @@
   <!-- ===== Home page ===== -->
   <section class="page" id="page-home">
     <div class="home-hero">
-      <div class="eyebrow">NCEA Level 3 · Calculus</div>
-      <h1 class="home-h1" data-i18n="home_h1">Calculus Self-Paced Program</h1>
-      <p class="home-lead" data-i18n="home_lead1">專為 NCEA Level 3 Calculus 學生打造的雲端自主學習平台。</p>
-      <p class="home-lead" data-i18n="home_lead2">透過系統化課程、自編講義與練習解析，協助學生建立扎實的微積分基礎，掌握 NCEA 考試重點，提升學習成效。</p>
-      <p class="home-lead" data-i18n="home_lead3">探索課程內容、認識講師，開啟您的 NCEA Level 3 Calculus 學習之旅。</p>
+      <div class="eyebrow" data-i18n="home_eyebrow">NCEA · Mathematics &amp; Statistics</div>
+      <h1 class="home-h1" data-i18n="home_h1">Self-Paced Learning Program</h1>
+      <p class="home-lead" data-i18n="home_lead1">專為 NCEA 學生打造的雲端自主學習平台。</p>
+      <p class="home-lead" data-i18n="home_lead2">提供系統化課程、自編講義、精選例題與完整解析，協助學生掌握各科核心概念、熟悉 NCEA 題型，並建立扎實的數學與統計基礎。</p>
+      <p class="home-lead" style="margin-bottom:6px; font-weight:600; color:var(--paper);" data-i18n="home_coverage_label">目前課程涵蓋：</p>
+      <ul class="home-coverage-list">
+        <li data-i18n="home_coverage_1">NCEA Level 3 · Calculus</li>
+        <li data-i18n="home_coverage_2">NCEA Level 3 · Statistics</li>
+        <li data-i18n="home_coverage_3">NCEA Level 2 · Mathematics</li>
+      </ul>
+      <p class="home-lead" data-i18n="home_lead3">依照自己的學習進度，彈性安排學習時間，透過影片課程與配套教材逐步掌握 NCEA 重要內容。</p>
+      <p class="home-lead" data-i18n="home_lead4">探索課程內容、認識講師，開始您的 NCEA 學習之旅。</p>
       <div class="home-actions">
         <button class="btn btn-primary" id="homeCoursesBtn" data-i18n="home_btn_courses">查看課程</button>
         <button class="btn btn-ghost" id="homeRegisterBtn" data-i18n="home_btn_register">立即報名</button>
@@ -215,32 +242,56 @@
     <div class="page-head">
       <div class="eyebrow" data-i18n="courses_eyebrow">課程與價格</div>
       <h1 data-i18n="courses_h2">課程介紹</h1>
-      <p data-i18n="courses_p">歡迎來到 Dr Song Academy！我們致力於協助學生提升學習能力，精通 NCEA Level 3 課程內容，邁向卓越的學術表現。</p>
+      <p data-i18n="courses_p">歡迎來到 Dr Song Academy！我們致力於協助學生提升學習能力，精通 NCEA 課程內容，邁向卓越的學術表現。</p>
     </div>
 
-    <div class="info-block">
-      <p data-i18n="courses_intro">我們目前提供完整的 NCEA Level 3 Calculus Self-Paced Program（雲端自主學習課程），讓學生能搭配專屬「大寶典」講義，按照自己的節奏進行深度學習。課程採用結構化、考試導向的教學設計，搭配錄播教學影片、完整教材及詳盡解題示範，幫助學生深入理解各項評核標準，提升解題能力，朝 Excellence 邁進。</p>
+    <div class="subject-selector" id="subjectSelector">
+      <button class="subject-tab active" data-subject="calculus" data-i18n="subject_tab_calculus">NCEA Level 3 Calculus</button>
+      <button class="subject-tab" data-subject="statistics" data-i18n="subject_tab_statistics">NCEA Level 3 Statistics</button>
+      <button class="subject-tab" data-subject="l2-math" data-i18n="subject_tab_l2math">NCEA Level 2 Mathematics</button>
     </div>
 
-    <div class="info-block">
-      <h3 data-i18n="courses_features_title">課程特色</h3>
-      <ul>
-        <li data-i18n="feat_1">雲端自主學習課程，學生可按照自己的時間安排學習進度</li>
-        <li data-i18n="feat_2">彈性學習模式，隨時觀看課程影片，不受固定上課時間限制</li>
-        <li data-i18n="feat_3">可重複觀看課程內容，加深理解並有效複習重要觀念</li>
-        <li data-i18n="feat_4">專屬「大寶典」講義，預設提供完整涵蓋 NCEA Level 3 Calculus 重要內容的數位唯讀版教材（亦提供實體精裝版加購升級服務）</li>
-        <li data-i18n="feat_5">錄播影片＋完整教材＋詳細解題示範，逐步建立解題能力</li>
-        <li data-i18n="feat_6">依學生程度調整學習節奏，適合需要彈性學習與反覆複習的學生</li>
-        <li data-i18n="feat_7">精準對標 NCEA Level 3 Calculus 評核標準，全面提升微積分理解、解題能力與 Excellence 答題技巧</li>
-      </ul>
+    <div class="subject-view active" id="subjectView-calculus">
+      <div class="info-block">
+        <p data-i18n="courses_intro">我們目前提供完整的 NCEA Level 3 Calculus Self-Paced Program（雲端自主學習課程），讓學生能搭配專屬「大寶典」講義，按照自己的節奏進行深度學習。課程採用結構化、考試導向的教學設計，搭配錄播教學影片、完整教材及詳盡解題示範，幫助學生深入理解各項評核標準，提升解題能力，朝 Excellence 邁進。</p>
+      </div>
+
+      <div class="info-block">
+        <h3 data-i18n="courses_features_title">課程特色</h3>
+        <ul>
+          <li data-i18n="feat_1">雲端自主學習課程，學生可按照自己的時間安排學習進度</li>
+          <li data-i18n="feat_2">彈性學習模式，隨時觀看課程影片，不受固定上課時間限制</li>
+          <li data-i18n="feat_3">可重複觀看課程內容，加深理解並有效複習重要觀念</li>
+          <li data-i18n="feat_4">專屬「大寶典」講義，預設提供完整涵蓋 NCEA Level 3 Calculus 重要內容的數位唯讀版教材（亦提供實體精裝版加購升級服務）</li>
+          <li data-i18n="feat_5">錄播影片＋完整教材＋詳細解題示範，逐步建立解題能力</li>
+          <li data-i18n="feat_6">依學生程度調整學習節奏，適合需要彈性學習與反覆複習的學生</li>
+          <li data-i18n="feat_7">精準對標 NCEA Level 3 Calculus 評核標準，全面提升微積分理解、解題能力與 Excellence 答題技巧</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3 data-i18n="courses_mode_title">課程模式</h3>
+        <p data-i18n="courses_mode_desc">本課程採用 Self-Paced Program（雲端自主學習課程），學生可依照自己的時間安排學習進度，透過錄播影片、完整教材與解題示範，循序漸進掌握 NCEA Level 3 Calculus 內容。</p>
+      </div>
+
+      <div id="subjectsContainer"></div>
     </div>
 
-    <div class="info-block">
-      <h3 data-i18n="courses_mode_title">課程模式</h3>
-      <p data-i18n="courses_mode_desc">本課程採用 Self-Paced Program（雲端自主學習課程），學生可依照自己的時間安排學習進度，透過錄播影片、完整教材與解題示範，循序漸進掌握 NCEA Level 3 Calculus 內容。</p>
+    <div class="subject-view" id="subjectView-statistics">
+      <div class="coming-soon-box">
+        <div class="coming-soon-icon">◐</div>
+        <h3 data-i18n="coming_soon_title">即將推出</h3>
+        <p data-i18n="coming_soon_desc_stats">NCEA Level 3 Statistics 課程正在製作中，敬請期待。</p>
+      </div>
     </div>
 
-    <div id="subjectsContainer"></div>
+    <div class="subject-view" id="subjectView-l2-math">
+      <div class="coming-soon-box">
+        <div class="coming-soon-icon">◐</div>
+        <h3 data-i18n="coming_soon_title">即將推出</h3>
+        <p data-i18n="coming_soon_desc_l2math">NCEA Level 2 Mathematics 課程正在製作中，敬請期待。</p>
+      </div>
+    </div>
   </section>
 
   <!-- ===== Registration / payment info page ===== -->
@@ -306,10 +357,16 @@
   // ---------- i18n ----------
   const dict = {
     tab_home:{zh:'首頁', en:'Home'},
-    home_h1:{zh:'Calculus Self-Paced Program', en:'Calculus Self-Paced Program'},
-    home_lead1:{zh:'專為 NCEA Level 3 Calculus 學生打造的雲端自主學習平台。', en:'An online, self-paced learning platform built for NCEA Level 3 Calculus students.'},
-    home_lead2:{zh:'透過系統化課程、自編講義與練習解析，協助學生建立扎實的微積分基礎，掌握 NCEA 考試重點，提升學習成效。', en:'Structured lessons, custom-written handouts, and worked solutions help students build a solid foundation in calculus, master key NCEA exam points, and improve results.'},
-    home_lead3:{zh:'探索課程內容、認識講師，開啟您的 NCEA Level 3 Calculus 學習之旅。', en:'Explore the courses, meet the instructor, and begin your NCEA Level 3 Calculus journey.'},
+    home_eyebrow:{zh:'NCEA · Mathematics &amp; Statistics', en:'NCEA · Mathematics &amp; Statistics'},
+    home_h1:{zh:'Self-Paced Learning Program', en:'Self-Paced Learning Program'},
+    home_lead1:{zh:'專為 NCEA 學生打造的雲端自主學習平台。', en:'An online, self-paced learning platform built for NCEA students.'},
+    home_lead2:{zh:'提供系統化課程、自編講義、精選例題與完整解析，協助學生掌握各科核心概念、熟悉 NCEA 題型，並建立扎實的數學與統計基礎。', en:'Structured lessons, custom-written handouts, carefully chosen examples, and full worked solutions help students master core concepts, get familiar with NCEA question styles, and build a solid foundation in maths and statistics.'},
+    home_coverage_label:{zh:'目前課程涵蓋：', en:'Currently covering:'},
+    home_coverage_1:{zh:'NCEA Level 3 · Calculus', en:'NCEA Level 3 · Calculus'},
+    home_coverage_2:{zh:'NCEA Level 3 · Statistics', en:'NCEA Level 3 · Statistics'},
+    home_coverage_3:{zh:'NCEA Level 2 · Mathematics', en:'NCEA Level 2 · Mathematics'},
+    home_lead3:{zh:'依照自己的學習進度，彈性安排學習時間，透過影片課程與配套教材逐步掌握 NCEA 重要內容。', en:'Study at your own pace and on your own schedule — video lessons and matching materials help you steadily master key NCEA content.'},
+    home_lead4:{zh:'探索課程內容、認識講師，開始您的 NCEA 學習之旅。', en:'Explore the courses, meet the instructor, and begin your NCEA journey.'},
     home_btn_courses:{zh:'查看課程', en:'View Courses'},
     home_btn_register:{zh:'立即報名', en:'Register Now'},
     tab_instructor:{zh:'講師介紹', en:'Instructor'},
@@ -327,6 +384,12 @@
     instr_cred4:{zh:'國立臺灣大學 化學工程學士', en:'BSc in Chemical Engineering, National Taiwan University'},
 
     courses_eyebrow:{zh:'課程與價格', en:'Courses & pricing'},
+    subject_tab_calculus:{zh:'NCEA Level 3 Calculus', en:'NCEA Level 3 Calculus'},
+    subject_tab_statistics:{zh:'NCEA Level 3 Statistics', en:'NCEA Level 3 Statistics'},
+    subject_tab_l2math:{zh:'NCEA Level 2 Mathematics', en:'NCEA Level 2 Mathematics'},
+    coming_soon_title:{zh:'即將推出', en:'Coming Soon'},
+    coming_soon_desc_stats:{zh:'NCEA Level 3 Statistics 課程正在製作中，敬請期待。', en:'NCEA Level 3 Statistics is currently in development. Stay tuned.'},
+    coming_soon_desc_l2math:{zh:'NCEA Level 2 Mathematics 課程正在製作中，敬請期待。', en:'NCEA Level 2 Mathematics is currently in development. Stay tuned.'},
     courses_h2:{zh:'課程介紹', en:'Courses'},
     courses_p:{zh:'歡迎來到 Dr Song Academy！我們致力於協助學生提升學習能力，精通 NCEA Level 3 課程內容，邁向卓越的學術表現。',
                en:'Welcome to Dr Song Academy! We\u2019re committed to helping students build stronger learning skills, master NCEA Level 3 content, and reach for academic excellence.'},
@@ -449,6 +512,14 @@
 
   document.getElementById('langZh').addEventListener('click', ()=>{ lang='zh'; renderAll(); });
   document.getElementById('langEn').addEventListener('click', ()=>{ lang='en'; renderAll(); });
+
+  // ---------- Course subject selector (within Courses page) ----------
+  const subjectTabButtons = document.querySelectorAll('#subjectSelector .subject-tab');
+  function showSubjectView(subj){
+    document.querySelectorAll('.subject-view').forEach(v => v.classList.toggle('active', v.id === 'subjectView-'+subj));
+    subjectTabButtons.forEach(b => b.classList.toggle('active', b.dataset.subject === subj));
+  }
+  subjectTabButtons.forEach(b => b.addEventListener('click', ()=> showSubjectView(b.dataset.subject)));
 
   // ---------- Tab navigation ----------
   const tabButtons = document.querySelectorAll('#topTabs button');
